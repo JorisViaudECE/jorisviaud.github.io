@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Joris Viaud - Junior Quantitative Analyst/Data Scientist</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+        });
+    </script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -26,7 +32,7 @@
             background-color: #fff;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
-        h1, h2, h3 {
+        h1, h2, h3, h4 {
             color: #2c3e50;
         }
         .portfolio-item {
@@ -63,6 +69,13 @@
             border-radius: 20px;
             font-size: 0.9em;
         }
+        .equation {
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #f8f8f8;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
         .image-placeholder {
             background-color: #ecf0f1;
             height: 300px;
@@ -83,77 +96,82 @@
     <div class="container">
         <section id="about">
             <h2>About Me</h2>
-            <p>I am a junior quantitative analyst with expertise in data science and the adaptation of deep and reinforcement learning models in finance. I work on projects implementing complex models and techniques, providing rigorous analysis and quantitative problem-solving. I am always eager to learn and expand my skills in quantitative analysis, algorithm development, and project management.</p>
+            <p>I am a junior quantitative analyst with expertise in data science and the adaptation of deep and reinforcement learning models in finance. My work focuses on implementing complex models and techniques, providing rigorous analysis and quantitative problem-solving. I am passionate about exploring innovative approaches to financial modeling and always eager to expand my skills in quantitative analysis, algorithm development, and project management.</p>
             <div class="skills">
                 <span class="skill">Python</span>
                 <span class="skill">Machine Learning</span>
                 <span class="skill">Deep Learning</span>
                 <span class="skill">Quantitative Analysis</span>
                 <span class="skill">Financial Modeling</span>
+                <span class="skill">Data Science</span>
             </div>
         </section>
         
         <section id="portfolio">
             <h2>Project Portfolio</h2>
             <div class="portfolio-item">
-                <h3>Option Pricing with PINN (Physics-Informed Neural Network)</h3>
-                <p>In this project, I developed a physics-informed neural network to replicate the Black-Scholes option pricing model for a single asset. PINNs are a novel approach that combines the power of neural networks with the constraints of physical laws or mathematical equations.</p>
+                <h3>Option Pricing with Physics-Informed Neural Networks (PINNs)</h3>
+                <p>In this project, I developed a physics-informed neural network to solve the Black-Scholes option pricing model for a single asset. This innovative approach combines the power of neural networks with the constraints of financial mathematical equations, offering a new perspective on option pricing methodologies.</p>
                 
                 <h4>What are PINNs?</h4>
-                <p>Physics-Informed Neural Networks (PINNs) are a class of deep learning models that incorporate physical laws into the learning process. They are designed to solve supervised learning tasks while respecting any given law of physics described by general nonlinear partial differential equations.</p>
+                <p>Physics-Informed Neural Networks (PINNs) are a class of deep learning models that incorporate physical laws or mathematical equations into the learning process. In the context of finance, "physics" refers to the governing equations of financial models. PINNs are designed to solve supervised learning tasks while respecting these underlying mathematical principles, allowing for solutions that are both data-driven and theory-consistent.</p>
                 
                 <h4>The Black-Scholes Partial Differential Equation</h4>
-                <p>The Black-Scholes PDE for a European call option is given by:</p>
+                <p>The core of the Black-Scholes model is a partial differential equation (PDE) that describes the behavior of option prices. For a European call option, this PDE is given by:</p>
                 <div class="equation">
-                    ∂V/∂t + (1/2)σ²S²(∂²V/∂S²) + rS(∂V/∂S) - rV = 0
+                    \[
+                    \frac{\partial V}{\partial t} + \frac{1}{2}\sigma^2S^2\frac{\partial^2 V}{\partial S^2} + rS\frac{\partial V}{\partial S} - rV = 0
+                    \]
                 </div>
                 <p>Where:</p>
                 <ul>
-                    <li>V is the option price</li>
-                    <li>S is the underlying asset price</li>
-                    <li>t is time</li>
-                    <li>σ is the volatility of the underlying asset</li>
-                    <li>r is the risk-free interest rate</li>
+                    <li>$V(S,t)$ is the option price as a function of the underlying asset price $S$ and time $t$</li>
+                    <li>$\sigma$ is the volatility of the underlying asset</li>
+                    <li>$r$ is the risk-free interest rate</li>
+                    <li>$\frac{\partial V}{\partial t}$ represents the rate of change of the option price with respect to time</li>
+                    <li>$\frac{\partial V}{\partial S}$ and $\frac{\partial^2 V}{\partial S^2}$ are the first and second partial derivatives of $V$ with respect to $S$, also known as the option's Delta and Gamma, respectively</li>
                 </ul>
                 
-                <h4>How PINNs Work in Option Pricing</h4>
-                <p>In the context of option pricing, I used a PINN to solve the Black-Scholes PDE. The neural network was trained to satisfy both the PDE and the initial/boundary conditions of the option pricing problem. This approach allowed for:</p>
+                <h4>PINN Implementation for Option Pricing</h4>
+                <p>In my implementation, I used a PINN to solve the Black-Scholes PDE. The neural network was trained to satisfy both the PDE and the initial/boundary conditions of the option pricing problem. This approach offered several advantages:</p>
                 <ul>
                     <li>Accurate pricing of call options for a single asset</li>
-                    <li>Faster computation compared to traditional numerical methods</li>
-                    <li>The ability to handle the complex, non-linear nature of the Black-Scholes equation</li>
+                    <li>Faster computation compared to traditional numerical methods, especially for complex scenarios</li>
+                    <li>The ability to handle the non-linear nature of the Black-Scholes equation directly within the neural network architecture</li>
                 </ul>
                 
-                <h4>Implementation and Results</h4>
-                <p>In my implementation, I modeled a European call option using PINNs. The pricing results were quite accurate when compared to the analytical Black-Scholes solution. However, I encountered some limitations:</p>
+                <h4>Results and Challenges</h4>
+                <p>The PINN model demonstrated promising results, achieving high accuracy in option pricing when compared to analytical Black-Scholes solutions. However, I encountered some limitations in the initial implementation:</p>
                 <ul>
-                    <li>Fixed Parameters: The model was trained with fixed values for volatility, maturity, and other constants. This limited its adaptability to different market scenarios.</li>
-                    <li>Lack of Generalization: The trained PINN couldn't automatically adapt to new parameter values without retraining.</li>
+                    <li>Fixed Parameters: The model was trained with specific values for volatility, maturity, and other constants, limiting its adaptability to varying market scenarios.</li>
+                    <li>Generalization: The trained PINN couldn't automatically adapt to new parameter values without retraining, restricting its practical applicability.</li>
                 </ul>
                 
                 <h4>Future Improvements</h4>
-                <p>To address these limitations, future work could focus on:</p>
+                <p>To address these challenges and enhance the model's capabilities, future work could focus on:</p>
                 <ul>
-                    <li>Incorporating Variable Inputs: Modify the PINN architecture to accept volatility, maturity, and other relevant parameters as inputs. This would allow the model to generalize across different market conditions.</li>
-                    <li>Multi-task Learning: Train the PINN on a range of parameter values simultaneously, enabling it to learn a more general solution to the Black-Scholes PDE.</li>
-                    <li>Adaptive Training: Implement a training regime that gradually introduces varying market parameters, helping the PINN to build a more robust understanding of the underlying financial dynamics.</li>
+                    <li>Parameter Incorporation: Modifying the PINN architecture to accept volatility, maturity, and other relevant parameters as inputs, allowing for more flexible and generalizable option pricing.</li>
+                    <li>Multi-task Learning: Training the PINN on a diverse range of market conditions and option types simultaneously, enabling it to learn a more robust and general solution to the Black-Scholes PDE.</li>
+                    <li>Adaptive Training Strategies: Implementing training regimes that gradually introduce varying market parameters, helping the PINN build a more comprehensive understanding of the underlying financial dynamics.</li>
+                    <li>Extended Financial Models: Expanding the approach to handle more complex option types and multi-asset scenarios, potentially incorporating stochastic volatility or jump-diffusion models.</li>
                 </ul>
                 
-                <h4>Advantages of Using PINNs for Option Pricing</h4>
+                <h4>Advantages of PINNs in Quantitative Finance</h4>
                 <ul>
-                    <li>Flexibility: Can potentially handle various types of options and underlying assets with proper training</li>
-                    <li>Efficiency: Once trained, can provide real-time pricing</li>
-                    <li>Accuracy: Can achieve high accuracy, especially in regions where data is sparse</li>
-                    <li>Physics-Informed: Incorporates the fundamental mathematical principles of option pricing directly into the learning process</li>
+                    <li>Flexibility: Potential to handle various types of options and underlying assets with proper training</li>
+                    <li>Efficiency: Once trained, PINNs can provide near real-time pricing and risk calculations</li>
+                    <li>Accuracy: Capable of achieving high accuracy, especially in regions where traditional data might be sparse</li>
+                    <li>Physics-Informed: Directly incorporates fundamental financial principles into the learning process, ensuring consistency with established theory</li>
+                    <li>Adaptability: With further development, PINNs could potentially adapt to changing market conditions more readily than traditional models</li>
                 </ul>
                 
-                <p>For a visual representation of how PINNs work in option pricing, check the image below :</p>
+                <p>For a visual representation of the PINN architecture used in this project:</p>
                 <div class="image-placeholder">
                     <img src="path/to/your/pinn_explanation_image.jpg" alt="PINN Explanation for Option Pricing" style="max-width: 100%; height: auto;">
                 </div>
                 
-                <p>To see the implementation details and results, check out my Jupyter notebook:</p>
-                <a href="https://nbviewer.jupyter.org/urls/raw.githubusercontent.com/JorisViaudECE/jorisviaud.github.io/main/PINN_vanilla_pytorch.ipynb" target="_blank">View the PINN Option Pricing Notebook</a>
+                <p>To explore the implementation details, results, and code for this project, please visit my GitHub repository:</p>
+                <a href="https://github.com/JorisViaudECE/jorisviaud.github.io" target="_blank">View the PINN Option Pricing Project on GitHub</a>
             </div>
         </section>
     </div>
