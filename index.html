@@ -56,11 +56,18 @@
             max-width: 150px;
             border: 3px solid #ecf0f1;
         }
+        .skills-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
         .skills {
             display: flex;
             flex-wrap: wrap;
+            justify-content: center;
             gap: 10px;
-            margin-top: 20px;
+            margin-bottom: 20px;
         }
         .skill {
             background-color: #3498db;
@@ -68,6 +75,25 @@
             padding: 5px 10px;
             border-radius: 20px;
             font-size: 0.9em;
+        }
+        .cv-download {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .cv-download:hover {
+            background-color: #2980b9;
+        }
+        .project-title {
+            font-size: 1.8em;
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
         }
         .equation {
             padding: 10px;
@@ -85,26 +111,6 @@
             margin: 20px 0;
             border-radius: 5px;
         }
-        .project-title {
-            font-size: 1.8em;
-            color: #2c3e50;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-        }
-        .cv-download {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #3498db;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-        .cv-download:hover {
-            background-color: #2980b9;
-        }
     </style>
 </head>
 <body>
@@ -117,15 +123,18 @@
         <section id="about">
             <h2>About Me</h2>
             <p>I am a junior quantitative analyst with expertise in data science and the adaptation of deep and reinforcement learning models in finance. My work focuses on implementing complex models and techniques, providing rigorous analysis and quantitative problem-solving. I am passionate about exploring innovative approaches to financial modeling and always eager to expand my skills in quantitative analysis, algorithm development, and project management.</p>
-            <div class="skills">
-                <span class="skill">Python</span>
-                <span class="skill">Machine Learning</span>
-                <span class="skill">Deep Learning</span>
-                <span class="skill">Quantitative Analysis</span>
-                <span class="skill">Financial Modeling</span>
-                <span class="skill">Data Science</span>
+            <div class="skills-container">
+                <div class="skills">
+                    <span class="skill">Python</span>
+                    <span class="skill">Machine Learning</span>
+                    <span class="skill">Deep Learning</span>
+                    <span class="skill">Quantitative Analysis</span>
+                    <span class="skill">Financial Modeling</span>
+                    <span class="skill">Option Pricing</span>
+                    <span class="skill">PINNs</span>
+                </div>
+                <a href="path/to/your/cv.pdf" class="cv-download" download>Download CV (PDF)</a>
             </div>
-            <a href="path/to/your/cv.pdf" class="cv-download" download>Download CV (PDF)</a>
         </section>
         
         <section id="portfolio">
