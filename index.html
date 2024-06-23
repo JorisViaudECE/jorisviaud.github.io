@@ -10,36 +10,67 @@
             line-height: 1.6;
             margin: 0;
             padding: 0;
+            color: #333;
+            background-color: #f4f4f4;
         }
         header {
-            background: #333;
-            color: #fff;
-            padding: 10px 0;
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px 0;
             text-align: center;
         }
         .container {
             padding: 20px;
             max-width: 1000px;
             margin: 0 auto;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
-        h1, h2 {
-            color: #333;
+        h1, h2, h3 {
+            color: #2c3e50;
         }
         .portfolio-item {
-            margin-bottom: 20px;
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #ecf0f1;
+            border-radius: 5px;
         }
         .portfolio-item a {
-            color: #1e90ff;
+            color: #3498db;
             text-decoration: none;
+            font-weight: bold;
         }
         .portfolio-item a:hover {
             text-decoration: underline;
         }
         .photo {
             display: block;
-            margin: 0 auto 10px;
+            margin: 0 auto 20px;
             border-radius: 50%;
             max-width: 150px;
+            border: 3px solid #ecf0f1;
+        }
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .skill {
+            background-color: #3498db;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+        .image-placeholder {
+            background-color: #ecf0f1;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+            border-radius: 5px;
         }
     </style>
 </head>
@@ -53,14 +84,46 @@
         <section id="about">
             <h2>About Me</h2>
             <p>I am a junior quantitative analyst with expertise in data science and the adaptation of deep and reinforcement learning models in finance. I work on projects implementing complex models and techniques, providing rigorous analysis and quantitative problem-solving. I am always eager to learn and expand my skills in quantitative analysis, algorithm development, and project management.</p>
+            <div class="skills">
+                <span class="skill">Python</span>
+                <span class="skill">Machine Learning</span>
+                <span class="skill">Deep Learning</span>
+                <span class="skill">Quantitative Analysis</span>
+                <span class="skill">Financial Modeling</span>
+            </div>
         </section>
         
         <section id="portfolio">
             <h2>Project Portfolio</h2>
             <div class="portfolio-item">
-                <h3>Option Pricing with PINN Neural Network</h3>
-                <p>Development of a physics-informed neural network to replicate Black-Scholes option pricing.</p>
-                <a href="https://nbviewer.jupyter.org/urls/raw.githubusercontent.com/JorisViaudECE/jorisviaud.github.io/main/PINN_vanilla_pytorch.ipynb" target="_blank">View the Notebook</a>
+                <h3>Option Pricing with PINN (Physics-Informed Neural Network)</h3>
+                <p>In this project, I developed a physics-informed neural network to replicate the Black-Scholes option pricing model. PINNs are a novel approach that combines the power of neural networks with the constraints of physical laws or mathematical equations.</p>
+                
+                <h4>What are PINNs?</h4>
+                <p>Physics-Informed Neural Networks (PINNs) are a class of deep learning models that incorporate physical laws into the learning process. They are designed to solve supervised learning tasks while respecting any given law of physics described by general nonlinear partial differential equations.</p>
+                
+                <h4>How PINNs Work in Option Pricing</h4>
+                <p>In the context of option pricing, PINNs can be used to solve the Black-Scholes partial differential equation (PDE). The neural network is trained to satisfy both the PDE and the initial/boundary conditions of the option pricing problem. This approach allows for:</p>
+                <ul>
+                    <li>Accurate pricing of options across a wide range of market conditions</li>
+                    <li>Faster computation compared to traditional numerical methods</li>
+                    <li>The ability to handle complex, multi-dimensional problems</li>
+                </ul>
+                
+                <h4>Advantages of Using PINNs for Option Pricing</h4>
+                <ul>
+                    <li>Flexibility: Can handle various types of options and underlying assets</li>
+                    <li>Efficiency: Once trained, can provide real-time pricing</li>
+                    <li>Accuracy: Can achieve high accuracy, especially in regions where data is sparse</li>
+                </ul>
+                
+                <p>For a visual representation of how PINNs work in option pricing, you can add an image here:</p>
+                <div class="image-placeholder">
+                    <img src="path/to/your/pinn_explanation_image.jpg" alt="PINN Explanation for Option Pricing" style="max-width: 100%; height: auto;">
+                </div>
+                
+                <p>To see the implementation details and results, check out my Jupyter notebook:</p>
+                <a href="https://nbviewer.jupyter.org/urls/raw.githubusercontent.com/JorisViaudECE/jorisviaud.github.io/main/PINN_vanilla_pytorch.ipynb" target="_blank">View the PINN Option Pricing Notebook</a>
             </div>
         </section>
     </div>
