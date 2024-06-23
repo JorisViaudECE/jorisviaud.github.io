@@ -97,27 +97,57 @@
             <h2>Project Portfolio</h2>
             <div class="portfolio-item">
                 <h3>Option Pricing with PINN (Physics-Informed Neural Network)</h3>
-                <p>In this project, I developed a physics-informed neural network to replicate the Black-Scholes option pricing model. PINNs are a novel approach that combines the power of neural networks with the constraints of physical laws or mathematical equations.</p>
+                <p>In this project, I developed a physics-informed neural network to replicate the Black-Scholes option pricing model for a single asset. PINNs are a novel approach that combines the power of neural networks with the constraints of physical laws or mathematical equations.</p>
                 
                 <h4>What are PINNs?</h4>
                 <p>Physics-Informed Neural Networks (PINNs) are a class of deep learning models that incorporate physical laws into the learning process. They are designed to solve supervised learning tasks while respecting any given law of physics described by general nonlinear partial differential equations.</p>
                 
-                <h4>How PINNs Work in Option Pricing</h4>
-                <p>In the context of option pricing, PINNs can be used to solve the Black-Scholes partial differential equation (PDE). The neural network is trained to satisfy both the PDE and the initial/boundary conditions of the option pricing problem. This approach allows for:</p>
+                <h4>The Black-Scholes Partial Differential Equation</h4>
+                <p>The Black-Scholes PDE for a European call option is given by:</p>
+                <div class="equation">
+                    ∂V/∂t + (1/2)σ²S²(∂²V/∂S²) + rS(∂V/∂S) - rV = 0
+                </div>
+                <p>Where:</p>
                 <ul>
-                    <li>Accurate pricing of options across a wide range of market conditions</li>
+                    <li>V is the option price</li>
+                    <li>S is the underlying asset price</li>
+                    <li>t is time</li>
+                    <li>σ is the volatility of the underlying asset</li>
+                    <li>r is the risk-free interest rate</li>
+                </ul>
+                
+                <h4>How PINNs Work in Option Pricing</h4>
+                <p>In the context of option pricing, I used a PINN to solve the Black-Scholes PDE. The neural network was trained to satisfy both the PDE and the initial/boundary conditions of the option pricing problem. This approach allowed for:</p>
+                <ul>
+                    <li>Accurate pricing of call options for a single asset</li>
                     <li>Faster computation compared to traditional numerical methods</li>
-                    <li>The ability to handle complex, multi-dimensional problems</li>
+                    <li>The ability to handle the complex, non-linear nature of the Black-Scholes equation</li>
+                </ul>
+                
+                <h4>Implementation and Results</h4>
+                <p>In my implementation, I modeled a European call option using PINNs. The pricing results were quite accurate when compared to the analytical Black-Scholes solution. However, I encountered some limitations:</p>
+                <ul>
+                    <li>Fixed Parameters: The model was trained with fixed values for volatility, maturity, and other constants. This limited its adaptability to different market scenarios.</li>
+                    <li>Lack of Generalization: The trained PINN couldn't automatically adapt to new parameter values without retraining.</li>
+                </ul>
+                
+                <h4>Future Improvements</h4>
+                <p>To address these limitations, future work could focus on:</p>
+                <ul>
+                    <li>Incorporating Variable Inputs: Modify the PINN architecture to accept volatility, maturity, and other relevant parameters as inputs. This would allow the model to generalize across different market conditions.</li>
+                    <li>Multi-task Learning: Train the PINN on a range of parameter values simultaneously, enabling it to learn a more general solution to the Black-Scholes PDE.</li>
+                    <li>Adaptive Training: Implement a training regime that gradually introduces varying market parameters, helping the PINN to build a more robust understanding of the underlying financial dynamics.</li>
                 </ul>
                 
                 <h4>Advantages of Using PINNs for Option Pricing</h4>
                 <ul>
-                    <li>Flexibility: Can handle various types of options and underlying assets</li>
+                    <li>Flexibility: Can potentially handle various types of options and underlying assets with proper training</li>
                     <li>Efficiency: Once trained, can provide real-time pricing</li>
                     <li>Accuracy: Can achieve high accuracy, especially in regions where data is sparse</li>
+                    <li>Physics-Informed: Incorporates the fundamental mathematical principles of option pricing directly into the learning process</li>
                 </ul>
                 
-                <p>For a visual representation of how PINNs work in option pricing, you can add an image here:</p>
+                <p>For a visual representation of how PINNs work in option pricing, check the image below :</p>
                 <div class="image-placeholder">
                     <img src="path/to/your/pinn_explanation_image.jpg" alt="PINN Explanation for Option Pricing" style="max-width: 100%; height: auto;">
                 </div>
