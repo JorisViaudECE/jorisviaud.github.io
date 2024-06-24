@@ -146,10 +146,10 @@
             <div class="portfolio-item">
                 <h2 class="project-title">Option Pricing with Physics-Informed Neural Networks (PINNs)</h2>
                 <p>In this project, I developed a physics-informed neural network to solve the Black-Scholes option pricing model for a single asset. This innovative approach combines the power of neural networks with the constraints of financial mathematical equations, offering a new perspective on option pricing methodologies.</p>
-                
+                                
                 <h4>What are PINNs?</h4>
                 <p>Physics-Informed Neural Networks (PINNs) are a class of deep learning models that incorporate physical laws or mathematical equations into the learning process. In the context of finance, "physics" refers to the governing equations of financial models. PINNs are designed to solve supervised learning tasks while respecting these underlying mathematical principles, allowing for solutions that are both data-driven and theory-consistent.</p>
-                
+                                
                 <h4>The Black-Scholes Partial Differential Equation</h4>
                 <p>The core of the Black-Scholes model is a partial differential equation (PDE) that describes the behavior of option prices. For a European call option, this PDE is given by:</p>
                 <div class="equation">
@@ -165,7 +165,14 @@
                     <li>$\frac{\partial V}{\partial t}$ represents the rate of change of the option price with respect to time</li>
                     <li>$\frac{\partial V}{\partial S}$ and $\frac{\partial^2 V}{\partial S^2}$ are the first and second partial derivatives of $V$ with respect to $S$, also known as the option's Delta and Gamma, respectively</li>
                 </ul>
-                
+                <p>The terminal condition for a European call option is given by the payoff at maturity $T$:</p>
+                <div class="equation">
+                    \[
+                    V(S, T) = \max(S - K, 0)
+                    \]
+                </div>
+                <p>Where $K$ is the strike price of the option.</p>
+
                 <h4>PINN Implementation for Option Pricing</h4>
                 <p>In my implementation, I used a PINN to solve the Black-Scholes PDE. The neural network was trained to satisfy both the PDE and the initial/boundary conditions of the option pricing problem. This approach offered several advantages:</p>
                 <ul>
@@ -173,14 +180,14 @@
                     <li>Faster computation compared to traditional numerical methods, especially for complex scenarios</li>
                     <li>The ability to handle the non-linear nature of the Black-Scholes equation directly within the neural network architecture</li>
                 </ul>
-                
+                                
                 <h4>Results and Challenges</h4>
                 <p>The PINN model demonstrated promising results, achieving high accuracy in option pricing when compared to analytical Black-Scholes solutions. However, I encountered some limitations in the initial implementation:</p>
                 <ul>
                     <li>Fixed Parameters: The model was trained with specific values for volatility, maturity, and other constants, limiting its adaptability to varying market scenarios.</li>
                     <li>Generalization: The trained PINN couldn't automatically adapt to new parameter values without retraining, restricting its practical applicability.</li>
                 </ul>
-                
+                                
                 <h4>Future Improvements</h4>
                 <p>To address these challenges and enhance the model's capabilities, future work could focus on:</p>
                 <ul>
@@ -196,7 +203,7 @@
                 </div>
                 
                 <p>To explore the implementation details, results, and code for this project, please visit my GitHub repository:</p>
-                <a href="https://nbviewer.jupyter.org/urls/raw.githubusercontent.com/JorisViaudECE/jorisviaud.github.io/main/PINN_vanilla_pytorch.ipynb" target="_blank">View the PINN Option Pricing Project on GitHub</a>
+                <a href="https://nbviewer.jupyter.org/urls/raw.githubusercontent.com/JorisViaudECE/jorisviaud.github.io/main/PINN_vanilla_pytorch.ipynb" target="_blank">PINN Option Pricing notebook</a>
             </div>
         </section>
     </div>
